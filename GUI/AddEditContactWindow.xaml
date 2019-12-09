@@ -1,0 +1,63 @@
+﻿<Window x:Class="GUI.AddEditContactWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:my="clr-namespace:GUI"
+        WindowStartupLocation="CenterScreen"
+        Title="AddContact" Height="424" Width="421" Name="winAddContact" MaxHeight="424" MaxWidth="421">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources\GlassButton.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="30*"/>
+            <RowDefinition Height="76" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="92"/>
+            <ColumnDefinition Width="304*"/>
+        </Grid.ColumnDefinitions>
+        
+        <Label Content="Add \ Update Window" Name="lblWindowHeader" Grid.Column="1" FontSize="22" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF2F4160" />
+        
+        <Label Content="ID:" Height="Auto" Grid.Row="1" FontWeight="Normal" HorizontalAlignment="Left" VerticalAlignment="Center" Name="lblID" Margin="1,6,0,0" />
+
+        <TextBox FontSize="12"  Grid.Row="1" Grid.Column="1" Margin="19,5" TabIndex="0" Name="txtID" IsEnabled="False" IsReadOnly="True" />
+
+        <Label Content="First Name:" Height="Auto" Grid.Row="2" FontWeight="Normal" HorizontalAlignment="Left" VerticalAlignment="Center" Name="lblFirstName" Margin="1,6,0,0" />
+        <TextBox FontSize="12"  Grid.Row="2" Grid.Column="1" Margin="19,4,19,6" TabIndex="0" Name="txtFirstName" >
+
+
+        </TextBox>
+
+        <Label Content="Last Name:" Height="Auto" Grid.Row="3" FontWeight="Normal" HorizontalAlignment="Left" VerticalAlignment="Center" Name="lblLastName" Margin="1,6,0,0" />
+        <TextBox FontSize="12"  Grid.Row="3" Grid.Column="1" Margin="19,5" TabIndex="1" Name="txtLastName" />
+
+        <Label Content="PhoneNumber:" Height="Auto" Grid.Row="5" FontWeight="Normal" HorizontalAlignment="Left" VerticalAlignment="Center" Name="lblPhoneNumber" Margin="1,6,0,98" />
+
+        <StackPanel Grid.Row = "5" Name="PhoneNumbersGrid" Grid.Column="1" Margin="19,0,0,0">
+            <my:PhoneControl Height="35" VerticalAlignment="Top" TabIndex="3" x:Name="phoneControl" />
+        </StackPanel>
+
+        <Label Content="Group Name:" Height="Auto" Grid.Row="4" FontWeight="Normal" HorizontalAlignment="Left" VerticalAlignment="Center" Name="lblGroupName" Margin="-1,4,0,2" />
+        <ComboBox Height="22" FontSize="12"  Grid.Row="4" Grid.Column="1" Margin="19,5" TabIndex="2" Name="cmbGroupName" DisplayMemberPath="GroupName" IsReadOnly="True" IsEditable="True" Text="-- Select a group --" >
+        </ComboBox>
+
+        <Border Grid.Row="6" Grid.ColumnSpan="2" Background="#FF32416B" Margin="1,9,0,12" Name="borderMenu" HorizontalAlignment="Left" Width="398">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center"  HorizontalAlignment="Right" Height="35" Width="169">
+                <Button Content="Save" Width="77"  Height="35" Margin="0,0,10,0" TabIndex="5" x:Name="btnSave"  Click="btnSave_Click"  />
+                <Button Content="Exit" Width="77" Height="35" TabIndex="6" x:Name="btnExit" Click="btnExit_Click" IsCancel="True" />
+            </StackPanel>
+        </Border>
+        <Button Content="Add" Grid.Row="5" Height="22" HorizontalAlignment="Left" Margin="12,33,0,0" Name="btnAddAnotherPhone" VerticalAlignment="Top" Width="68" Click="btnAddAnotherPhone_Click" TabIndex="4" />
+    </Grid>
+</Window>

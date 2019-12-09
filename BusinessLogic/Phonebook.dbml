@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Phonebook" Class="PhonebookDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=חופית-PC\SQLEXPRESS;Initial Catalog=Phonebook;Integrated Security=True" SettingsObjectName="BusinessLogic.Properties.Settings" SettingsPropertyName="PhonebookConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.tbGroups" Member="tbGroups">
+    <Type Name="tbGroup">
+      <Column Name="GroupID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="GroupName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="tbGroup_tbPerson" Member="tbPersons" ThisKey="GroupID" OtherKey="GroupID" Type="tbPerson" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbPersons" Member="tbPersons">
+    <Type Name="tbPerson">
+      <Column Name="PersonID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="GroupID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="tbPerson_tbPhone" Member="tbPhones" ThisKey="PersonID" OtherKey="PersonID" Type="tbPhone" />
+      <Association Name="tbGroup_tbPerson" Member="tbGroup" ThisKey="GroupID" OtherKey="GroupID" Type="tbGroup" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbPhones" Member="tbPhones">
+    <Type Name="tbPhone">
+      <Column Name="PhoneID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PhoneNumber" Type="System.String" DbType="NVarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="PhoneTypeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PersonID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="tbPerson_tbPhone" Member="tbPerson" ThisKey="PersonID" OtherKey="PersonID" Type="tbPerson" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="tbPhoneType_tbPhone" Member="tbPhoneType" ThisKey="PhoneTypeID" OtherKey="PhoneTypeID" Type="tbPhoneType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbPhoneTypes" Member="tbPhoneTypes">
+    <Type Name="tbPhoneType">
+      <Column Name="PhoneTypeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PhoneTypeName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="tbPhoneType_tbPhone" Member="tbPhones" ThisKey="PhoneTypeID" OtherKey="PhoneTypeID" Type="tbPhone" />
+    </Type>
+  </Table>
+  <Function Name="dbo.spDeletePerson" Method="spDeletePerson">
+    <Parameter Name="personID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.spGroupsDisplay" Method="spGroupsDisplay">
+    <ElementType Name="spGroupsDisplayResult">
+      <Column Name="GroupName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spPhoneTypesDisplay" Method="spPhoneTypesDisplay">
+    <ElementType Name="spPhoneTypesDisplayResult">
+      <Column Name="PhoneTypeName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spInsertUpdateContact" Method="spInsertUpdateContact">
+    <Parameter Name="firstName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="lastName" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="groupID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="personID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.spLinkPhone" Method="spLinkPhone">
+    <Parameter Name="PersonID" Parameter="personID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="phoneNumber" Type="System.String" DbType="NVarChar(15)" />
+    <Parameter Name="phoneTypeID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="PhoneID" Parameter="phoneID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.spDeletePhone" Method="spDeletePhone">
+    <Parameter Name="phoneID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.spContactsDisplay" Method="spContactsDisplay">
+    <ElementType Name="spContactsDisplayResult">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PhoneID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PhoneTypeName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PhoneNumber" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="GroupName" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

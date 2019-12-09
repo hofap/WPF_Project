@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Phonebook">
+  <DataContextMoniker Name="/PhonebookDataContext" />
+  <nestedChildShapes>
+    <classShape Id="37fd9c95-0e4f-4bbb-84e8-dc41b714600d" absoluteBounds="0.75, 1.125, 2, 1.1401595052083335">
+      <DataClassMoniker Name="/PhonebookDataContext/tbGroup" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d20e3934-db99-4f49-8d04-a4dc38e81d83" absoluteBounds="0.765, 1.585, 1.9700000000000002, 0.58015950520833326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4a155d6d-1a21-4c79-8c59-5d6a5fde57cc" absoluteBounds="3.5, 0.875, 2, 1.4940006510416666">
+      <DataClassMoniker Name="/PhonebookDataContext/tbPerson" />
+      <nestedChildShapes>
+        <elementListCompartment Id="85114dea-e679-4ef5-83ed-2d3d3e5009d1" absoluteBounds="3.515, 1.335, 1.9700000000000002, 0.93400065104166674" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c329028d-16ea-4844-b5e8-b0e745d8a848" absoluteBounds="6.25, 0.875, 2, 1.4940006510416666">
+      <DataClassMoniker Name="/PhonebookDataContext/tbPhone" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2e401ea6-ae39-4048-ad69-22b5a868ed52" absoluteBounds="6.265, 1.335, 1.9700000000000002, 0.93400065104166674" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="10acc28e-9712-47c5-a985-0e9d76418765" absoluteBounds="3.5, 4.125, 2, 1.1401595052083344">
+      <DataClassMoniker Name="/PhonebookDataContext/tbPhoneType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="71565364-32e7-4d71-90c8-d693b69db9a8" absoluteBounds="3.515, 4.585, 1.9700000000000002, 0.58015950520833326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.75 : 1.69507975260417); (3.5 : 1.69507975260417)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/PhonebookDataContext/tbGroup/tbGroup_tbPerson" />
+      <nodes>
+        <classShapeMoniker Id="37fd9c95-0e4f-4bbb-84e8-dc41b714600d" />
+        <classShapeMoniker Id="4a155d6d-1a21-4c79-8c59-5d6a5fde57cc" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 1.62200032552083); (6.25 : 1.62200032552083)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/PhonebookDataContext/tbPerson/tbPerson_tbPhone" />
+      <nodes>
+        <classShapeMoniker Id="4a155d6d-1a21-4c79-8c59-5d6a5fde57cc" />
+        <classShapeMoniker Id="c329028d-16ea-4844-b5e8-b0e745d8a848" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.5 : 4.69507975260417); (7.25 : 4.69507975260417); (7.25 : 2.36900065104167)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/PhonebookDataContext/tbPhoneType/tbPhoneType_tbPhone" />
+      <nodes>
+        <classShapeMoniker Id="10acc28e-9712-47c5-a985-0e9d76418765" />
+        <classShapeMoniker Id="c329028d-16ea-4844-b5e8-b0e745d8a848" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
